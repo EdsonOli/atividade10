@@ -24,10 +24,18 @@ public class MeuMapeamento<C,V> implements IMeuMapeamento<C,V> {
     @Override
     public void insere(C chave, V valor) {
         Object[] lista = new Object[2];
+        int ind;
         if(!jaExiste(chave)){
             lista[0] =  chave;
             lista[1] = valor;
             mapa.add(lista);
+        }
+        else {
+            for( Object[] o : mapa) {
+                if (o[0].equals(chave)) {
+                    o[1] = valor;
+                }
+            }
         }
     }
 
